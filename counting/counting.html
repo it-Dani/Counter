@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>counting</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="counting-container">
+        <div class="txt" id="txt">
+            <span id="count" class="count">0</span><br>
+            <span id="input-number"></span>
+            <div id="endtxt-box">
+                <span id="end-txt"><a href="Choose number.html" id="click">شمارش شما به اتمام رسید برای شروع دوباره شمارش کلیک کنید</a> </span>
+            </div>
+
+        </div>
+        <button type="submit" id="count-btn" class="btn-sub" onclick="count()">برای شمارش کلیک کنید</button>
+    </div>
+
+    <script>
+        const number = sessionStorage.getItem("number");
+        //const counting = Number(document.getElementById("count"));
+
+        document.getElementById("input-number").textContent = number ;
+
+    
+        click = 0;
+        function count() {
+            //counting.innerHTML = counting + 1
+            click += 1;
+            document.getElementById("count").innerHTML = click;
+
+            if (click == number) {
+                document.getElementById("count-btn").innerHTML = "شمارش شما به اتمام رسید"
+                document.getElementById("count-btn").disabled = true;
+                document.getElementById("count-btn").style.backgroundColor = "#181818";
+                document.getElementById("count-btn").style.color = "white";
+                document.getElementById("count-btn").classList.remove("btn-sub");
+                document.getElementById("endtxt-box").style.display = "inline";
+                document.getElementById("endtxt-box").style.color = "white";
+                document.getElementById("txt").style.transform = "scale(0.8)";
+                document.getElementById("txt").style.backgroundColor = "white";
+            }
+        }
+        
+    </script>
+</body>
+</html>
